@@ -2,5 +2,5 @@
 
 namespace DiplomskiRad.MediatR.Commands.EmisijeEFC.UkloniEmisiju
 {
-    public record UkloniEmisijuRequestEFC(int Id) : IRequest<Unit>;
+    public record UkloniEmisijuRequestEFC(int Id) : IRequest;
 }

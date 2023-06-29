@@ -7,7 +7,6 @@ namespace DiplomskiRad.EFCRepository
     public interface IEFCRepository<T> : IDisposable where T : class
     {
         DbSet<T> Table();
-        List<Emisija> GetAll();
         Task AddAsync(T entity);
         Task AddListAsync(IEnumerable<T> entities);
         Task UpdateAsync(T entity);

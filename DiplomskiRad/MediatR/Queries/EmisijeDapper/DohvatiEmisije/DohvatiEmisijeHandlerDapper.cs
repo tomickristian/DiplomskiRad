@@ -2,7 +2,6 @@
 using DiplomskiRad.Models;
 using MediatR;
 using Microsoft.IdentityModel.Tokens;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace DiplomskiRad.MediatR.Queries.EmisijeDapper.DohvatiEmisije
 {

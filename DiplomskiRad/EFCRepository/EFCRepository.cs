@@ -13,11 +13,6 @@ namespace DiplomskiRad.EFCRepository
         {
             _context = context;
         }
-        public List<Emisija> GetAll() 
-        {
-            
-            return _context.Emisije.ToList();
-        }
         public DbSet<T> Table()
         {
             return _context.Set<T>();
@@ -57,6 +52,7 @@ namespace DiplomskiRad.EFCRepository
         public void Dispose()
         {
             _context.Dispose();
+            GC.SuppressFinalize(this);
         }
     }
 }

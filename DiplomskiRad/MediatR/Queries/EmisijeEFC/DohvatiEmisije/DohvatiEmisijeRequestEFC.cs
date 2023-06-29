@@ -3,5 +3,5 @@ using MediatR;
 
 namespace DiplomskiRad.MediatR.Queries.EmisijeEFC.DohvatiEmisije
 {
-    public record DohvatiEmisijeRequestEFC(string? NazivPart) : IRequest<List<Emisija>>;
+    public record DohvatiEmisijeRequestEFC(string? NazivPart) : IRequest<List<DohvatiEmisijeResponseEFC>>;
 }

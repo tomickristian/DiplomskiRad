@@ -4,7 +4,6 @@ using DiplomskiRad.Exceptions;
 using AutoMapper;
 using DiplomskiRad.EFCRepository;
 using Microsoft.EntityFrameworkCore;
-using AutoMapper.QueryableExtensions;
 
 namespace DiplomskiRad.MediatR.Queries.EmisijeEFC.DohvatiEmisijuPoId
 {

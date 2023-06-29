@@ -2,5 +2,5 @@
 
 namespace DiplomskiRad.MediatR.Commands.EmisijeDapper.UkloniEmisiju
 {
-    public record UkloniEmisijuRequestDapper(int Id) : IRequest<Unit>;
+    public record UkloniEmisijuRequestDapper(int Id) : IRequest;
 }

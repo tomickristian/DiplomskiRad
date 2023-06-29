@@ -4,7 +4,7 @@ using MediatR;
 
 namespace DiplomskiRad.MediatR.Commands.EmisijeEFC.UkloniEmisiju
 {
-    public class UkloniEmisijuHandlerEFC : IRequestHandler<UkloniEmisijuRequestEFC, Unit>
+    public class UkloniEmisijuHandlerEFC : IRequestHandler<UkloniEmisijuRequestEFC>
     {
         private readonly IEFCRepository<Emisija> _emisijeRepository;
 
@@ -13,11 +13,11 @@ namespace DiplomskiRad.MediatR.Commands.EmisijeEFC.UkloniEmisiju
             _emisijeRepository = tvProgramRepository;
         }
 
-        public async Task<Unit> Handle(UkloniEmisijuRequestEFC request, CancellationToken cancellationToken)
+        public async Task Handle(UkloniEmisijuRequestEFC request, CancellationToken cancellationToken)
         {
             await _emisijeRepository.RemoveByIdAsync(request.Id);
             await _emisijeRepository.SaveAsync();
-            return Unit.Value;
+            
         }
     }
 }

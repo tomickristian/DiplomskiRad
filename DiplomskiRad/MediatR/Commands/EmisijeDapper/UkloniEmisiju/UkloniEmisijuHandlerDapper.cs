@@ -4,7 +4,7 @@ using MediatR;
 
 namespace DiplomskiRad.MediatR.Commands.EmisijeDapper.UkloniEmisiju
 {
-    public class UkloniEmisijuHandlerDapper : IRequestHandler<UkloniEmisijuRequestDapper, Unit>
+    public class UkloniEmisijuHandlerDapper : IRequestHandler<UkloniEmisijuRequestDapper>
     {
         private readonly IDapperRepository<Emisija> _emisijeRepository;
 
@@ -13,10 +13,10 @@ namespace DiplomskiRad.MediatR.Commands.EmisijeDapper.UkloniEmisiju
             _emisijeRepository = dapperRepository;
         }
 
-        public async Task<Unit> Handle(UkloniEmisijuRequestDapper request, CancellationToken cancellationToken)
+        public async Task Handle(UkloniEmisijuRequestDapper request, CancellationToken cancellationToken)
         {
             await _emisijeRepository.DeleteByIdAsync(request.Id);
-            return Unit.Value;
+            
         }
     }
 }
