@@ -23,18 +23,21 @@ namespace DiplomskiRad.MediatR.Queries.EmisijeEFC.DohvatiEmisije
         public async Task<List<DohvatiEmisijeResponseEFC>> Handle(DohvatiEmisijeRequestEFC request, CancellationToken cancellationToken)
         {
             List<DohvatiEmisijeResponseEFC> result;
-            if (!request.NazivPart.IsNullOrEmpty())
+            if (request.NazivPart.IsNullOrEmpty())
             {
                 result = await _emisijeRepository.Table()
-                .Where(e => e.Naziv.Contains(request.NazivPart))
-                .ProjectTo<DohvatiEmisijeResponseEFC>(_mapper.ConfigurationProvider)
-                .AsNoTracking()
-                .ToListAsync(cancellationToken);
+                    .ProjectTo<DohvatiEmisijeResponseEFC>(_mapper.ConfigurationProvider)
+                    .AsNoTracking()
+                    .ToListAsync(cancellationToken);
             }
-            result = await _emisijeRepository.Table()
-                .ProjectTo<DohvatiEmisijeResponseEFC>(_mapper.ConfigurationProvider)
-                .AsNoTracking()
-                .ToListAsync(cancellationToken);
+            else
+            {
+                result = await _emisijeRepository.Table()
+                    .Where(e => e.Naziv.Contains(request.NazivPart))
+                    .ProjectTo<DohvatiEmisijeResponseEFC>(_mapper.ConfigurationProvider)
+                    .AsNoTracking()
+                    .ToListAsync(cancellationToken);
+            }
             return result ?? throw new EntityNotFoundException();
         }
     }

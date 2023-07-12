@@ -16,13 +16,13 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.Get
 builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
 builder.Services.AddSingleton(provider => provider.GetRequiredService<IMapper>().ConfigurationProvider);
 builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddScoped(typeof(IDapperRepository<>), typeof(DapperRepository<>));
+builder.Services.AddScoped(typeof(IEFCRepository<>), typeof(EFCRepository<>));
+builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 builder.Services.AddDbContext<TvProgramContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("TVPROGRAM"));
 });
-builder.Services.AddScoped(typeof(IDapperRepository<>), typeof(DapperRepository<>));
-builder.Services.AddScoped(typeof(IEFCRepository<>), typeof(EFCRepository<>));
-builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
 var app = builder.Build();
 

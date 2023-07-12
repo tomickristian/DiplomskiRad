@@ -16,7 +16,6 @@ namespace DiplomskiRad.MediatR.Commands.EmisijeDapper.UrediEmisiju
         public async Task Handle(UrediEmisijuRequestDapper request, CancellationToken cancellationToken)
         {
             await _emisijeRepository.UpdateAsync(request);
-            
         }
     }
 }

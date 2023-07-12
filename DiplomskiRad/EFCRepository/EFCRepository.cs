@@ -5,7 +5,8 @@ using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
 
 namespace DiplomskiRad.EFCRepository
 {
-    public class EFCRepository<T> : IEFCRepository<T> where T : class
+    public class EFCRepository<T> : IDisposable,
+        IEFCRepository<T> where T : class
     {
         private readonly TvProgramContext _context;
 
@@ -52,7 +53,6 @@ namespace DiplomskiRad.EFCRepository
         public void Dispose()
         {
             _context.Dispose();
-            GC.SuppressFinalize(this);
         }
     }
 }

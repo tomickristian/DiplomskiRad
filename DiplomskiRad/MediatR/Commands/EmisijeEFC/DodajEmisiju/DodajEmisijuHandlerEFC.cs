@@ -22,9 +22,7 @@ namespace DiplomskiRad.MediatR.Commands.EmisijeEFC.DodajEmisiju
 
         public async Task Handle(DodajEmisijuRequestEFC request, CancellationToken cancellationToken)
         {
-            Emisija emisija = _mapper.Map<Emisija>(request);
-            emisija.TvPostaja = await _mediator.Send(new DohvatiTvPostajuPoIdRequest(request.TvPostajaId));
-            emisija.Zanr = await _mediator.Send(new DohvatiZanrPoIdRequest(request.TvPostajaId));
+            await _emisijeRepository.AddAsync(_mapper.Map<Emisija>(request));
             await _emisijeRepository.SaveAsync();
         }
     }

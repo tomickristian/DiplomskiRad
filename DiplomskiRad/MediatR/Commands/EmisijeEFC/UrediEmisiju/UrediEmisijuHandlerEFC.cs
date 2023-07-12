@@ -20,7 +20,6 @@ namespace DiplomskiRad.MediatR.Commands.EmisijeEFC.UrediEmisiju
         {
             await _emisijeRepository.UpdateAsync(_mapper.Map<Emisija>(request));
             await _emisijeRepository.SaveAsync();
-            
         }
     }
 }
